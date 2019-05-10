@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Card, Form, Button } from 'react-bootstrap'
+import { Row, Form, Button } from 'react-bootstrap'
 import FormErrors from './FormErrors.js'
 
 const textRight = {
@@ -54,7 +54,7 @@ class RequestForm extends Component{
       break;
     case 'serviceType':
       serviceTypeValid = value.length >= 1;
-      formErrors.serviceType = serviceTypeValid ? '' : 'Service Type is empty.';
+      formErrors.serviceType = serviceTypeValid ? '' : 'Service Type is invalid.';
       break;
     case 'description':
       descriptionValid = value.length >= 10;
@@ -91,7 +91,7 @@ class RequestForm extends Component{
   }
 
   // Sends a POST request which returns the response in a console.log.
-  assistanceRequests = (event) => {
+  onSubmit = (event) => {
     event.preventDefault()
     const { firstName, lastName, email, serviceType, description } = this.state
     fetch('http://localhost:49567/api/assistance-requests', {
@@ -127,6 +127,7 @@ class RequestForm extends Component{
     )
   }
 
+  // Sets state of the target input field and checks if its a valid input.
   handleChange = (event) => {
   const { name, value } = event.target
     this.setState({
@@ -135,18 +136,20 @@ class RequestForm extends Component{
     )
   }
 
+  //
   errorClass(error) {
-    return(error.length === 0 ? 'is-valid' : 'has-error');
+    return(error.length === 0 ? '' : 'has-error');
   }
 
   render(){
     const { firstName, lastName, email, serviceType, description} = this.state.formErrors
+    console.log(this.state)
     return (
       <Row>
-        <Form onSubmit={this.assistanceRequests} className="col-md-6 col-md-offset-4 form">
+        <Form onSubmit={this.onSubmit} className="col-md-6 col-md-offset-4 form">
           <h2 className="title">New Assistance Request</h2>
           <Form.Group
-            className={`form-group ${this.errorClass(firstName)}`}
+            className={`form-group ${this.errorClass(firstName)}` }
             controlId="formBasicFirstName">
             <Form.Label>First Name</Form.Label>
             <Form.Control
@@ -157,6 +160,7 @@ class RequestForm extends Component{
               name="firstName"
               placeholder="Enter First Name"
               data-error="Please select one option." />
+            <span className="help-block">{firstName}</span>
             <div style={textRight}>
               <Form.Text className="text-muted">Required</Form.Text>
             </div>
@@ -172,7 +176,8 @@ class RequestForm extends Component{
               type="text"
               name="lastName"
               value={this.state.lastName}
-              placeholder="Enter Last Name" />
+              placeholder="Enter Last Name"/>
+              <span className="help-block">{lastName}</span>
             <div style={textRight}>
               <Form.Text className="text-muted">Required</Form.Text>
             </div>
@@ -189,6 +194,7 @@ class RequestForm extends Component{
               name="email"
               value={this.state.email}
               placeholder="Enter Email Address" />
+            <span className="help-block">{email}</span>
             <div style={textRight}>
               <Form.Text className="text-muted">Required</Form.Text>
             </div>
@@ -202,13 +208,14 @@ class RequestForm extends Component{
               required
               as="select"
               onChange={this.handleChange}
-              name= "serviceType">
-              value={this.state.serviceType}
+              name= "serviceType"
+              value={this.state.serviceType}>
               <option value="">Select Service Type</option>
               {this.props.serviceTypes.map((type, id) => {
                 return <option key={id} value={type.display_name}>{type.display_name}</option>
               })}
             </Form.Control>
+            <span className="help-block">{serviceType}</span>
             <div style={textRight}>
               <Form.Text className="text-muted">Required</Form.Text>
             </div>
@@ -224,7 +231,7 @@ class RequestForm extends Component{
               rows="3"
               name="description"
               value={this.state.description}/>
-
+              <span className="help-block">{description}</span>
               <div style={textRight}>
                 <Form.Text className="text-muted">Required</Form.Text>
               </div>
