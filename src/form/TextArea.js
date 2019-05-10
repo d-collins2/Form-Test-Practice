@@ -7,12 +7,14 @@ const TextArea = ({value, handleChange, formError, errorClass, placeholder, name
       <Form.Group
           className={errorClass(formError)}
           controlId="exampleForm.ControlTextarea1">
+          <Form.Label>{controlId}</Form.Label>
           <Form.Control
               as="textarea"
               onChange={handleChange}
               rows="7"
               name={name}
-              value={value}/>
+              value={value}
+              placeholder={placeholder}/>
               <span className="help-block">{formError}</span>
               <div className="text-right">
                   <Form.Text className="text-red">Required</Form.Text>

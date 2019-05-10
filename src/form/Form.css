@@ -11,10 +11,13 @@ textarea { resize: none; }
 .form {
   align-items: center;
 	width: auto;
+  border: solid #b4b4b4;
+  padding: 2%;
+  margin-top: 2;
 }
 
 .title {
   align-items: center;
-	border-bottom: solid grey;
+	border-bottom: solid #b4b4b4;
   padding-bottom: 2%
 }

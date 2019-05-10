@@ -116,57 +116,56 @@ class RequestForm extends Component{
             <Row>
                 <Form onSubmit={this.onSubmit} className="col-md-6 col-md-offset-4 form">
                     <h2 className="title">New Assistance Request</h2>
-                        <TextInput
-                            controlId={"formBasicFirstName"}
-                            formError={firstName}
-                            errorClass={this.errorClass}
-                            handleChange={this.handleChange}
-                            name={'firstName'}
-                            placeholder={'First Name'}
-                            value={this.state.firstName}/>
+                    <TextInput
+                        controlId={"FirstName"}
+                        formError={firstName}
+                        errorClass={this.errorClass}
+                        handleChange={this.handleChange}
+                        name={'firstName'}
+                        placeholder={'First Name'}
+                        value={this.state.firstName}/>
 
-                        <TextInput
-                            controlId={"formBasicLastName"}
-                            errorClass={this.errorClass}
-                            formError={lastName}
-                            handleChange={this.handleChange}
-                            name={'lastName'}
-                            placeholder={'Last Name'}
-                            value={this.state.lastName}/>
+                    <TextInput
+                        controlId={"LastName"}
+                        errorClass={this.errorClass}
+                        formError={lastName}
+                        handleChange={this.handleChange}
+                        name={'lastName'}
+                        placeholder={'Last Name'}
+                        value={this.state.lastName}/>
 
-                        <TextInput
-                            controlId={"formBasicEmail"}
-                            errorClass={this.errorClass}
-                            formError={email}
-                            handleChange={this.handleChange}
-                            name={'email'}
-                            placeholder={'Email Address'}
-                            value={this.state.email}/>
+                    <TextInput
+                        controlId={"Email"}
+                        errorClass={this.errorClass}
+                        formError={email}
+                        handleChange={this.handleChange}
+                        name={'email'}
+                        placeholder={'Email Address'}
+                        value={this.state.email}/>
 
-                        <Select
-                            controlId={"formBasicSelectType"}
-                            errorClass={this.errorClass}
-                            formError={serviceType}
-                            handleChange={this.handleChange}
-                            name={'serviceType'}
-                            serviceTypes={this.props.serviceTypes}
-                            value={this.state.serviceType}/>
+                  <Select
+                      controlId={"SelectType"}
+                      errorClass={this.errorClass}
+                      formError={serviceType}
+                      handleChange={this.handleChange}
+                      name={'serviceType'}
+                      serviceTypes={this.props.serviceTypes}
+                      value={this.state.serviceType}/>
 
-                          <TextArea
-                              controlId={"formBasicTextArea1"}
-                              errorClass={this.errorClass}
-                              formError={description}
-                              handleChange={this.handleChange}
-                              name={'description'}
-                              serviceTypes={this.props.description}
-                              value={this.state.description}/>
+                    <TextArea
+                        controlId={"Description"}
+                        errorClass={this.errorClass}
+                        formError={description}
+                        handleChange={this.handleChange}
+                        name={'description'}
+                        serviceTypes={this.props.description}
+                        value={this.state.description}/>
 
                     <Form.Group id="formGridCheckbox">
                         <Form.Check
                             required
                             type="checkbox"
-                            label="I hereby accept the terms of service for THE NETWORK and the Privacy Policy"
-                            feedback="You must agree before submitting." />
+                            label="I hereby accept the terms of service for THE NETWORK and the Privacy Policy"/>
                     </Form.Group>
 
                     <div className="text-right">
