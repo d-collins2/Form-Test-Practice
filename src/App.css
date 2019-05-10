@@ -19,13 +19,6 @@
   color: white;
 }
 
-.form {
-  align-items: center;
-	width: auto;
-}
-
-.title {
-  align-items: center;
-	border-bottom: solid grey;
-  padding-bottom: 2%
+.textRight = {
+  text-align: right
 }
