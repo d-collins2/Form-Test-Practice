@@ -24,17 +24,20 @@ class RequestForm extends Component{
       lastName: '',
       email: '',
       serviceType: '',
-      description: ''}
+      description: ''
+    }
   }
 
+  //Checks if the input field on the form is valid.
   validateField(fieldName, value) {
-  let {
-        firstNameValid,
-        lastNameValid,
-        emailValid,
-        serviceTypeValid,
-        descriptionValid,
-        formErrors} = this.state
+    let { formErrors } = this.state
+    let {
+          firstNameValid,
+          lastNameValid,
+          emailValid,
+          serviceTypeValid,
+          descriptionValid,
+        } = this.state
 
   switch(fieldName) {
     case 'firstName':
@@ -70,6 +73,7 @@ class RequestForm extends Component{
                 }, this.validateForm);
   }
 
+  // Checks if all fields are valid and allows the button to submit a request.
   validateForm() {
     const {
       firstNameValid,
@@ -86,6 +90,7 @@ class RequestForm extends Component{
                     descriptionValid});
   }
 
+  // Sends a POST request which returns the response in a console.log.
   assistanceRequests = (event) => {
     event.preventDefault()
     const { firstName, lastName, email, serviceType, description } = this.state
@@ -108,7 +113,18 @@ class RequestForm extends Component{
       })
     })
     .then(res => res.json())
-    .then(response => console.log(response))
+    .then(response => {
+      console.log(response)
+      alert(response.message)
+    })
+    .then(
+      this.setState({
+                      firstName: '',
+                      lastName: '',
+                      email: '',
+                      serviceType: '',
+                      description: ''})
+    )
   }
 
   handleChange = (event) => {
@@ -124,12 +140,9 @@ class RequestForm extends Component{
   }
 
   render(){
-    console.log(this.state)
     const { firstName, lastName, email, serviceType, description} = this.state.formErrors
     return (
       <Row>
-      <Card>
-        <Card.Body>
         <Form onSubmit={this.assistanceRequests} className="col-md-6 col-md-offset-4 form">
           <h2 className="title">New Assistance Request</h2>
           <Form.Group
@@ -234,8 +247,6 @@ class RequestForm extends Component{
             </Button>
           </div>
         </Form>
-        </Card.Body>
-        </Card>
       </Row>
     );
   }
