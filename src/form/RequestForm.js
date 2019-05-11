@@ -10,75 +10,56 @@ import Button from './Button.js'
 class RequestForm extends Component{
     state = {
         formErrors: { firstName: '', lastName: '', email: '', serviceType: '', description: '' },
+        valid: { firstName: false, lastName: false, email: false, serviceType: false, description: false},
         firstName: '',
-        firstNameValid: false,
         lastName: '',
-        lastNameValid: false,
         email: '',
-        emailValid: false,
         serviceType: '',
-        serviceTypeValid: false,
         description: '',
-        descriptionValid: false,
         subscribed: false,
         formValid: false
     }
 
     //Checks if the input field on the form is valid.
     validateField = (fieldName, value) => {
-        let { firstNameValid, lastNameValid, emailValid, serviceTypeValid, descriptionValid, formErrors } = this.state
+        const { valid, formErrors } = this.state
+        let tempValid = {...valid}
+        let tempErrors = {...formErrors}
         switch(fieldName) {
             case 'firstName':
-                firstNameValid = value.length >= 1;
-                formErrors.firstName = firstNameValid ? '': 'First Name is empty.';
+                tempValid.firstName = value.length >= 1;
+                tempErrors.firstName = tempValid.firstName ? '': 'First Name is empty.';
                 break;
             case 'lastName':
-                lastNameValid = value.length >= 1;
-                formErrors.lastName = lastNameValid ? '': 'Last Name is empty.';
+                tempValid.lastName = value.length >= 1;
+                tempErrors.lastName = tempValid.lastName ? '': 'Last Name is empty.';
                 break;
             case 'email':
-                emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                formErrors.email = emailValid ? '' : 'Email is invalid.';
+                tempValid.email = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+                tempErrors.email = tempValid.email ? '' : 'Email is invalid.';
                 break;
             case 'serviceType':
-                serviceTypeValid = value.length >= 1;
-                formErrors.serviceType = serviceTypeValid ? '' : 'Service Type is invalid.';
+                tempValid.serviceType = value.length >= 1;
+                tempErrors.serviceType = tempValid.serviceType ? '' : 'Service Type is invalid.';
                 break;
             case 'description':
-                descriptionValid = value.length >= 1;
-                formErrors.description = descriptionValid ? '' : 'Description is empty.';
+                tempValid.description = value.length >= 1;
+                tempErrors.description = tempValid.description ? '' : 'Description is empty.';
                 break;
             default:
                 break;
         }
         this.setState({
-                        formErrors: formErrors,
-                        firstNameValid: firstNameValid,
-                        lastNameValid: lastNameValid,
-                        emailValid: emailValid,
-                        serviceTypeValid: serviceTypeValid,
-                        descriptionValid: descriptionValid
-                      }, this.validateForm);
+            formErrors: tempErrors,
+            valid: tempValid
+        }, this.validateForm);
     }
 
     // Checks if all fields are valid and allows the button to submit a request.
     validateForm() {
-        const {
-                firstNameValid,
-                lastNameValid,
-                emailValid,
-                serviceTypeValid,
-                descriptionValid,
-                subscribed
-              } = this.state
-        this.setState({formValid:
-                        firstNameValid &&
-                        lastNameValid &&
-                        emailValid &&
-                        serviceTypeValid &&
-                        descriptionValid &&
-                        subscribed
-                      });
+        const { subscribed } = this.state
+        const { firstName, lastName, email, serviceType, description } = this.state.valid
+        this.setState({formVal: firstName && lastName && email && serviceType && description && subscribed })
     }
 
     // Sends a POST request which returns the response in a console.log.
@@ -106,9 +87,13 @@ class RequestForm extends Component{
         .then(res => res.json())
         .then(response => {
             console.log(response)
+            if(response.echo){
             this.setState({
-                            firstName: '', lastName: '', email: '', serviceType: '', description: '' },
-                            alert(response.message))
+                firstName: '', lastName: '', email: '', serviceType: '', description: '' },
+                alert(response.message))
+            } else {
+                alert(response.message)
+            }
         })
     }
 
