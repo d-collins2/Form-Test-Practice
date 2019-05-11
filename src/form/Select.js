@@ -1,4 +1,5 @@
 import React from "react";
+import { Form } from 'react-bootstrap'
 import Options from "./Options.js";
 
 const Select = ({ value, handleChange, formError, name, controlId, serviceTypes }) => {
@@ -8,30 +9,22 @@ const Select = ({ value, handleChange, formError, name, controlId, serviceTypes 
         }
     }
   	return (
-    		<div className={`form-group ${errorClass(formError)}`} id="controlId">
-      			<select
+    		<Form.Group className={errorClass(formError)} id="controlId">
+      			<Form.Control
         				required
-                className="form-control"
+                as="select"
         				onChange={handleChange}
         				name={name}
         				value={value}>
         			  <option value="">Select Service Type</option>
         				<Options options={serviceTypes} />
-      			</select>
-      			<span className="help-block text-red">{formError}</span>
+      			</Form.Control>
+      			<Form.Text className="help-block text-red">{formError}</Form.Text>
             <div className="text-right">
-                <span><small className="text-muted">Required</small></span>
+                <Form.Text>className="text-muted">Required</Form.Text>
             </div>
-    		</div>
+    		</Form.Group>
   	);
-};
-
-Select.defaultProps = {
-	className: "form-group",
-	labelFor: "checkbox",
-	value: [],
-	handleChange: function() {},
-	label: "Select"
 };
 
 export default Select;

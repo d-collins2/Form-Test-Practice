@@ -2,14 +2,12 @@
 
 exports[`<Select /> Should render correctly 1`] = `
 <div
-  className="form-group undefined"
+  className="form-group"
   id="controlId"
 >
   <select
     className="form-control"
-    onChange={[Function]}
     required={true}
-    value={Array []}
   >
     <option
       value=""
@@ -17,19 +15,17 @@ exports[`<Select /> Should render correctly 1`] = `
       Select Service Type
     </option>
   </select>
-  <span
-    className="help-block text-red"
+  <small
+    className="help-block text-red form-text"
   />
   <div
     className="text-right"
   >
-    <span>
-      <small
-        className="text-muted"
-      >
-        Required
-      </small>
-    </span>
+    <small
+      className="form-text"
+    >
+      className="text-muted"&gt;Required
+    </small>
   </div>
 </div>
 `;

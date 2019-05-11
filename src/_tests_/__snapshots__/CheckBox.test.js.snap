@@ -2,14 +2,19 @@
 
 exports[`<CheckBuox /> should render correctly 1`] = `
 <div
-  className="form-check"
+  className="form-group"
 >
-  <input
-    className="form-check-input"
-    type="checkbox"
-  />
+  <div
+    className="form-check"
+  >
+    <input
+      className="form-check-input position-static"
+      disabled={false}
+      type="checkbox"
+    />
+  </div>
   <label
-    className="form-check-label"
+    className="form-label"
   />
 </div>
 `;

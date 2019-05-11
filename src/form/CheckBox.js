@@ -1,17 +1,17 @@
 import React from 'react';
+import { Form } from 'react-bootstrap'
 
-const CheckBox = ({ checked, handleChange, label, labelFor }) => {
+const CheckBox = ({ checked, handleChange, label, name }) => {
     return (
-      <div className="form-check">
-          <input
-            className="form-check-input"
-            name={labelFor}
+      <Form.Group>
+          <Form.Check
+            name={name}
             type="checkbox"
             checked={checked}
-            id={labelFor}
+            id={name}
             onChange={handleChange}/>
-          <label className="form-check-label">{label}</label>
-      </div>
+          <Form.Label>{label}</Form.Label>
+      </Form.Group>
     )
 }
 

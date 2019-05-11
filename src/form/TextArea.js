@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form } from 'react-bootstrap'
 
 const TextArea = ({ value, handleChange, formError, name, controlId }) => {
     function errorClass(error) {
@@ -7,20 +8,20 @@ const TextArea = ({ value, handleChange, formError, name, controlId }) => {
         }
     }
     return (
-        <div className={`form-group ${errorClass(formError)}`} id={controlId}>
-            <label>{controlId}</label>
-            <textarea
+        <Form.Group className={errorClass(formError)} id={controlId}>
+            <Form.Label>{controlId}</Form.Label>
+            <Form.Control
                 required
-                className="form-control"
+                as="textarea"
                 onChange={handleChange}
                 rows="4"
                 name={name}
                 value={value}/>
-            <span className="help-block text-red">{formError}</span>
+            <Form.Text className="help-block text-red">{formError}</Form.Text>
             <div className="text-right">
-                <span><small className="text-muted">Required</small></span>
+                <Form.Text className="text-muted">Required</Form.Text>
             </div>
-        </div>
+        </Form.Group>
     )
 }
 

@@ -2,26 +2,24 @@
 
 exports[`<TextInput /> Should render correctly 1`] = `
 <div
-  className="form-group undefined"
+  className="form-group"
 >
   <input
     className="form-control"
     required={true}
     type="text"
   />
-  <span
-    className="help-block text-red"
+  <small
+    className="help-block text-red form-text"
   />
   <div
     className="text-right"
   >
-    <span>
-      <small
-        className="text-muted"
-      >
-        Required
-      </small>
-    </span>
+    <small
+      className="text-muted form-text"
+    >
+      Required
+    </small>
   </div>
 </div>
 `;

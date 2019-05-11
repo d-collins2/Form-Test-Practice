@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form } from 'react-bootstrap'
 
 const TextInput = ({ value, handleChange, formError, name, placeholder, controlId }) => {
     function errorClass(error) {
@@ -7,20 +8,19 @@ const TextInput = ({ value, handleChange, formError, name, placeholder, controlI
         }
     }
     return (
-        <div className={`form-group ${errorClass(formError)}`} id={controlId}>
-            <input
+        <Form.Group className={errorClass(formError)} controlid={controlId}>
+            <Form.Control
                 required
-                className="form-control"
                 value={value}
                 onChange={handleChange}
                 type="text"
                 name={name}
                 placeholder={placeholder}/>
-            <span className="help-block text-red">{formError}</span>
+            <Form.Text className="help-block text-red">{formError}</Form.Text>
             <div className="text-right">
-                <span><small className="text-muted">Required</small></span>
+                <Form.Text className="text-muted">Required</Form.Text>
             </div>
-        </div>
+        </Form.Group>
     )
 }
 

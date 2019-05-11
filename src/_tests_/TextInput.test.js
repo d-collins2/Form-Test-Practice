@@ -1,7 +1,8 @@
-import renderer from 'react-test-renderer';
-import TextInput from '../form/TextInput';
 import React from 'react';
+import renderer from 'react-test-renderer';
+import { Form } from 'react-bootstrap'
 import { shallow } from 'enzyme';
+import TextInput from '../form/TextInput';
 
 describe('<TextInput />', function() {
 
@@ -11,16 +12,10 @@ describe('<TextInput />', function() {
         expect(tree).toMatchSnapshot();
     });
 
-    it('Should have <div> with correct class name', function(){
-        const component = shallow(<TextInput />);
-        const div = component.find('div').first()
-        expect(div.hasClass('form-group')).toBe(true)
-    });
-
     it('Should call changeHandler onChange on input', function() {
         const mockHandler = jest.fn();
         const component = shallow(<TextInput handleChange={mockHandler}/>);
-        const input = component.find('input');
+        const input = component.find(Form.Control);
         input.simulate('change');
         expect(mockHandler.mock.calls.length).toBe(1);
     })

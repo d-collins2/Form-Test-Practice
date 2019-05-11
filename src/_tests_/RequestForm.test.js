@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { Form } from 'react-bootstrap'
 import RequestForm from '../form/RequestForm';
 
 describe('<RequestForm>', function() {
@@ -7,41 +8,41 @@ describe('<RequestForm>', function() {
     it('Should capture firstname correctly onChange', function(){
         const component = mount(<RequestForm />);
         const input = component.find('input').at(0);
-        input.instance().value = 'hello';
+        input.instance().value = 'Damon';
         input.simulate('change');
-        expect(component.state().firstName).toEqual('hello');
+        expect(component.state().firstName).toEqual('Damon');
     })
 
     it('Should capture lastname correctly onChange', function(){
         const component = mount(<RequestForm />);
         const input = component.find('input').at(1);
-        input.instance().value = 'world';
+        input.instance().value = 'Collins';
         input.simulate('change');
-        expect(component.state().lastName).toEqual('world');
+        expect(component.state().lastName).toEqual('Collins');
     })
 
     it('Should capture email correctly onChange and change the props accordingly', function(){
         const component = mount(<RequestForm />);
         const input = component.find('input').at(2);
-        input.instance().value = 'mail@hotmail.com';
+        input.instance().value = 'test@gmail.com';
         input.simulate('change');
-        expect(component.state().email).toEqual('mail@hotmail.com');
+        expect(component.state().email).toEqual('test@gmail.com');
     })
 
     it('Should capture email correctly onChange and change the state accordingly', function(){
         const component = mount(<RequestForm />);
         const input = component.find('input').at(2);
-        input.instance().value = 'mail@hotmail.com';
+        input.instance().value = 'test@gmail.com';
         input.simulate('change');
-        expect(component.state().email).toEqual('mail@hotmail.com');
+        expect(component.state().email).toEqual('test@gmail.com');
     })
 
     it('Should capture checkbox ticked correctly onChange', function(){
         const component = mount(<RequestForm />);
-        const input = component.find('input').at(3);
+        const input = component.find('input').at(3)
         input.instance().checked = true;
         input.simulate('change');
-        expect(component.state().subscribed).toEqual(true);
+        expect(component.state().checked).toEqual(true);
     })
 
     it('Should call alert() when submit button is clicked', function(){
@@ -57,6 +58,6 @@ describe('<RequestForm>', function() {
 
         window.alert = jest.fn();
         component.setState(state)
-        expect(component.find('form').simulate('submit'));
+        expect(component.find(Form).simulate('submit'));
     })
 })

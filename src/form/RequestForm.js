@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
 import "./Form.css"
 import { Row, Form } from 'react-bootstrap'
+import Button from './Button.js'
+import CheckBox from './CheckBox.js'
+import TextArea from './TextArea.js'
 import TextInput from './TextInput.js'
 import Select from './Select.js'
-import TextArea from './TextArea.js'
-import CheckBox from './CheckBox.js'
-import Button from './Button.js'
 
 class RequestForm extends Component{
     state = {
-        formErrors: { firstName: '', lastName: '', email: '', serviceType: '', description: '' },
-        valid: { firstName: false, lastName: false, email: false, serviceType: false, description: false},
+        formErrors: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            serviceType: '',
+            description: ''
+        },
+        valid: {
+            firstName: false,
+            lastName: false,
+            email: false,
+            serviceType: false,
+            description: false
+        },
         firstName: '',
         lastName: '',
         email: '',
         serviceType: '',
         description: '',
-        subscribed: false,
+        checked: false,
         formValid: false
     }
 
@@ -56,9 +68,22 @@ class RequestForm extends Component{
 
     // Checks if all fields are valid and allows the button to submit a request.
     validateForm() {
-        const { subscribed } = this.state
-        const { firstName, lastName, email, serviceType, description } = this.state.valid
-        this.setState({formVal: firstName && lastName && email && serviceType && description && subscribed })
+        const { checked } = this.state
+        const {
+            firstName,
+            lastName,
+            email,
+            serviceType,
+            description
+        } = this.state.valid
+        this.setState({
+            formVal:  firstName &&
+                      lastName &&
+                      email &&
+                      serviceType &&
+                      description &&
+                      checked
+        })
     }
 
     // Sends a POST request which returns the response in a console.log.
@@ -88,7 +113,12 @@ class RequestForm extends Component{
             console.log(response)
             if(response.echo){
             this.setState({
-                firstName: '', lastName: '', email: '', serviceType: '', description: '' },
+                firstName: '',
+                lastName: '',
+                email: '',
+                serviceType: '',
+                description: ''
+            },
                 alert(response.message))
             } else {
                 alert(response.message)
@@ -113,11 +143,19 @@ class RequestForm extends Component{
     }
 
     render() {
-        const { firstName, lastName, email, serviceType, description} = this.state.formErrors
-        console.log(this.state)
+        const {
+            firstName,
+            lastName,
+            email,
+            serviceType,
+            description
+        } = this.state.formErrors
         return (
             <Row>
-                <Form onSubmit={this.onSubmit} className="col-md-3 col-md-offset-4 form">
+                <Form
+                    onSubmit={this.onSubmit}
+                    className="col-md-3 col-md-offset-4 form"
+                >
                     <h2 className="title">New Assistance Request</h2>
                     <TextInput
                         controlId={"FirstName"}
@@ -126,7 +164,8 @@ class RequestForm extends Component{
                         handleChange={this.handleChange}
                         name={"firstName"}
                         placeholder={"First Name"}
-                        value={this.state.firstName}/>
+                        value={this.state.firstName}
+                    />
                     <TextInput
                         controlId={"LastName"}
                         errorClass={this.errorClass}
@@ -134,7 +173,8 @@ class RequestForm extends Component{
                         handleChange={this.handleChange}
                         name={"lastName"}
                         placeholder={"Last Name"}
-                        value={this.state.lastName}/>
+                        value={this.state.lastName}
+                    />
                     <TextInput
                         controlId={"Email"}
                         errorClass={this.errorClass}
@@ -142,7 +182,9 @@ class RequestForm extends Component{
                         handleChange={this.handleChange}
                         name={"email"}
                         placeholder={"Email Address"}
-                        value={this.state.email}/>
+                        value={this.state.email}
+
+                    />
                     <Select
                         controlId={"SelectType"}
                         errorClass={this.errorClass}
@@ -150,7 +192,8 @@ class RequestForm extends Component{
                         handleChange={this.handleChange}
                         name={"serviceType"}
                         serviceTypes={this.props.serviceTypes}
-                        value={this.state.serviceType}/>
+                        value={this.state.serviceType}
+                    />
                     <TextArea
                         controlId={"Description"}
                         errorClass={this.errorClass}
@@ -158,12 +201,14 @@ class RequestForm extends Component{
                         handleChange={this.handleChange}
                         name={"description"}
                         serviceTypes={this.props.description}
-                        value={this.state.description}/>
+                        value={this.state.description}
+                    />
                     <CheckBox
-                        checked={this.state.subscribed}
+                        checked={this.state.checked}
                         handleChange={this.handleChange}
                         label="I hereby accept the terms of service for THE NETWORK and the Privacy Policy"
-                        labelFor="subscribed"/>
+                        name="checked"
+                    />
                     <Button text={"Get Assitance"}/>
                 </Form>
             </Row>
