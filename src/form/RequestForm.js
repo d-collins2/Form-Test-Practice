@@ -209,7 +209,7 @@ class RequestForm extends Component{
                         label="I hereby accept the terms of service for THE NETWORK and the Privacy Policy"
                         name="checked"
                     />
-                    <Button text={"Get Assitance"}/>
+                  <Button label={"Get Assitance"}/>
                 </Form>
             </Row>
         );

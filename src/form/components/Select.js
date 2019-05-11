@@ -21,7 +21,7 @@ const Select = ({ controlId, formError, handleChange, name, serviceTypes, value 
       			</Form.Control>
       			<Form.Text className="help-block text-red">{formError}</Form.Text>
             <div className="text-right">
-                <Form.Text>className="text-muted">Required</Form.Text>
+                <Form.Text className="text-muted">Required</Form.Text>
             </div>
     		</Form.Group>
   	);
