@@ -70,5 +70,5 @@ The `CheckBox.test.js` contains the following tests:
 ### Select
 The `Select.test.js` contains the follwoing tests:
 * Should render correctly
-* Should have one <select>
+* Should have one select
 * Should be able to select one <option> from drop down
