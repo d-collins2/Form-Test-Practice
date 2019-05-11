@@ -1,35 +1,31 @@
 import React from 'react';
-import { Form } from 'react-bootstrap'
 
-const TextInput = ({value, handleChange, formError, errorClass, name, placeholder, controlId}) => {
+const TextInput = ({value, handleChange, formError, name, placeholder, controlId}) => {
+    function errorClass(error) {
+        if(error){
+            return( error.length === 0 ? '' : 'has-error');
+        }
+    }
+
     return (
-        <Form.Group
-            className={errorClass(formError)}
-            controlId={controlId}>
-            <Form.Control
+        <div
+            className={`form-group ${errorClass(formError)}`}
+            id={controlId}>
+            <input
                 required
+                className="form-control"
                 value={value}
                 onChange={handleChange}
                 type="text"
                 name={name}
                 placeholder={placeholder}/>
-            <span className="help-block">{formError}</span>
+            <span className="help-block text-red">{formError}</span>
             <div className="text-right">
-                <Form.Text className="text-red">Required</Form.Text>
+                <span><small className="text-muted">Required</small></span>
             </div>
-        </Form.Group>
+        </div>
     )
 }
 
-TextInput.defaultProps = {
-    value: 'Text Input',
-    handleChange: function(){},
-    controlId: 'input',
-    name: 'input',
-    placeholder: 'input',
-    type: 'input',
-    className: 'form-control',
-    formError: ''
-}
 
 export default TextInput;

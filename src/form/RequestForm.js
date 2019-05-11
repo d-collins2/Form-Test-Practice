@@ -1,30 +1,32 @@
 import React, { Component } from 'react';
-import { Row, Form, Button } from 'react-bootstrap'
 import "./Form.css"
+import { Row, Form } from 'react-bootstrap'
 import TextInput from './TextInput.js'
 import Select from './Select.js'
 import TextArea from './TextArea.js'
+import CheckBox from './CheckBox.js'
+import Button from './Button.js'
 
 class RequestForm extends Component{
     state = {
+        formErrors: { firstName: '', lastName: '', email: '', serviceType: '', description: '' },
         firstName: '',
-        lastName: '',
-        email: '',
-        serviceType: '',
-        description: '',
         firstNameValid: false,
+        lastName: '',
         lastNameValid: false,
+        email: '',
         emailValid: false,
+        serviceType: '',
         serviceTypeValid: false,
+        description: '',
         descriptionValid: false,
-        formValid: false,
-        formErrors: { firstName: '', lastName: '', email: '', serviceType: '', description: ''}
+        subscribed: false,
+        formValid: false
     }
 
     //Checks if the input field on the form is valid.
     validateField = (fieldName, value) => {
         let { firstNameValid, lastNameValid, emailValid, serviceTypeValid, descriptionValid, formErrors } = this.state
-
         switch(fieldName) {
             case 'firstName':
                 firstNameValid = value.length >= 1;
@@ -49,20 +51,34 @@ class RequestForm extends Component{
             default:
                 break;
         }
-
-        this.setState({formErrors: formErrors,
-                          firstNameValid: firstNameValid,
-                          lastNameValid: lastNameValid,
-                          emailValid: emailValid,
-                          serviceTypeValid: serviceTypeValid,
-                          descriptionValid: descriptionValid
+        this.setState({
+                        formErrors: formErrors,
+                        firstNameValid: firstNameValid,
+                        lastNameValid: lastNameValid,
+                        emailValid: emailValid,
+                        serviceTypeValid: serviceTypeValid,
+                        descriptionValid: descriptionValid
                       }, this.validateForm);
     }
 
     // Checks if all fields are valid and allows the button to submit a request.
     validateForm() {
-        const { firstNameValid, lastNameValid, emailValid, serviceTypeValid, descriptionValid} = this.state
-        this.setState({formValid: firstNameValid && lastNameValid && emailValid && serviceTypeValid && descriptionValid });
+        const {
+                firstNameValid,
+                lastNameValid,
+                emailValid,
+                serviceTypeValid,
+                descriptionValid,
+                subscribed
+              } = this.state
+        this.setState({formValid:
+                        firstNameValid &&
+                        lastNameValid &&
+                        emailValid &&
+                        serviceTypeValid &&
+                        descriptionValid &&
+                        subscribed
+                      });
     }
 
     // Sends a POST request which returns the response in a console.log.
@@ -77,105 +93,88 @@ class RequestForm extends Component{
             },
             body: JSON.stringify({
                 assistance_request: {
-                    "contact": {
-                        "first_name": firstName,
-                        "last_name": lastName,
-                        "email": email
+                    'contact': {
+                        'first_name': firstName,
+                        'last_name': lastName,
+                        'email': email
                     },
-                    "service_type": serviceType,
-                    "description": description
+                    'service_type': serviceType,
+                    'description': description
                 }
             })
         })
         .then(res => res.json())
         .then(response => {
             console.log(response)
-            alert(response.message)
+            this.setState({
+                            firstName: '', lastName: '', email: '', serviceType: '', description: '' },
+                            alert(response.message))
         })
-        .then(
-            this.setState({ firstName: '', lastName: '', email: '', serviceType: '', description: '' })
-        )
     }
 
     // Sets state of the target input field and checks if its a valid input.
     handleChange = (event) => {
-    const { name, value } = event.target
+    let { name, type, checked, value } = event.target
+    const newValue = type === 'checkbox' ? checked : value;
         this.setState({
-            [name]: value },
-            () => { this.validateField(name, value) }
+            [name]: newValue },
+            () => { this.validateField(name, newValue) }
         )
     }
 
-    errorClass(error) {
-        return(error.length === 0 ? '' : 'has-error');
-    }
-
-    render(){
+    render() {
         const { firstName, lastName, email, serviceType, description} = this.state.formErrors
+        console.log(this.state)
         return (
             <Row>
-                <Form onSubmit={this.onSubmit} className="col-md-6 col-md-offset-4 form">
+                <Form onSubmit={this.onSubmit} className="col-md-3 col-md-offset-4 form">
                     <h2 className="title">New Assistance Request</h2>
                     <TextInput
                         controlId={"FirstName"}
                         formError={firstName}
                         errorClass={this.errorClass}
                         handleChange={this.handleChange}
-                        name={'firstName'}
-                        placeholder={'First Name'}
+                        name={"firstName"}
+                        placeholder={"First Name"}
                         value={this.state.firstName}/>
-
                     <TextInput
                         controlId={"LastName"}
                         errorClass={this.errorClass}
                         formError={lastName}
                         handleChange={this.handleChange}
-                        name={'lastName'}
-                        placeholder={'Last Name'}
+                        name={"lastName"}
+                        placeholder={"Last Name"}
                         value={this.state.lastName}/>
-
                     <TextInput
                         controlId={"Email"}
                         errorClass={this.errorClass}
                         formError={email}
                         handleChange={this.handleChange}
-                        name={'email'}
-                        placeholder={'Email Address'}
+                        name={"email"}
+                        placeholder={"Email Address"}
                         value={this.state.email}/>
-
-                  <Select
-                      controlId={"SelectType"}
-                      errorClass={this.errorClass}
-                      formError={serviceType}
-                      handleChange={this.handleChange}
-                      name={'serviceType'}
-                      serviceTypes={this.props.serviceTypes}
-                      value={this.state.serviceType}/>
-
+                    <Select
+                        controlId={"SelectType"}
+                        errorClass={this.errorClass}
+                        formError={serviceType}
+                        handleChange={this.handleChange}
+                        name={"serviceType"}
+                        serviceTypes={this.props.serviceTypes}
+                        value={this.state.serviceType}/>
                     <TextArea
                         controlId={"Description"}
                         errorClass={this.errorClass}
                         formError={description}
                         handleChange={this.handleChange}
-                        name={'description'}
+                        name={"description"}
                         serviceTypes={this.props.description}
                         value={this.state.description}/>
-
-                    <Form.Group id="formGridCheckbox">
-                        <Form.Check
-                            required
-                            type="checkbox"
-                            label="I hereby accept the terms of service for THE NETWORK and the Privacy Policy"/>
-                    </Form.Group>
-
-                    <div className="text-right">
-                        <Button
-                          className="btn btn-primary"
-                          type="submit"
-                          disabled={!this.state.formValid}>
-                          Get Assitance
-                        </Button>
-                    </div>
+                    <CheckBox
+                        checked={this.state.subscribed}
+                        handleChange={this.handleChange}
+                        label="I hereby accept the terms of service for THE NETWORK and the Privacy Policy"
+                        labelFor="subscribed"/>
+                    <Button text={"Get Assitance"}/>
                 </Form>
             </Row>
         );

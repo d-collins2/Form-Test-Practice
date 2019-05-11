@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Options /> should render correctly 1`] = `
+Array [
+  <option />,
+  <option />,
+  <option />,
+  <option />,
+]
+`;

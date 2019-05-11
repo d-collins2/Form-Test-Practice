@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> Should render correctly 1`] = `
+<div
+  className="text-right"
+>
+  <button
+    className="btn btn-primary btn btn-primary"
+    disabled={false}
+    type="submit"
+  >
+     
+     
+  </button>
+</div>
+`;

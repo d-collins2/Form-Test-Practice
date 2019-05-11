@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckBuox /> should render correctly 1`] = `
+<div
+  className="form-check"
+>
+  <input
+    className="form-check-input"
+    type="checkbox"
+  />
+  <label
+    className="form-check-label"
+  />
+</div>
+`;

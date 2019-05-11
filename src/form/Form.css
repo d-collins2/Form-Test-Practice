@@ -1,23 +1,25 @@
-textarea { resize: none; }
+textarea {
+  resize: none;
+}
 
-.text-red{
+.text-red {
   color: red
 }
 
-.text-right = {
+.text-right= {
   text-align: right
 }
 
 .form {
   align-items: center;
-	width: auto;
-  border: solid #b4b4b4;
+  width: auto;
+  border: solid #e4e4e4;
   padding: 2%;
   margin-top: 2;
 }
 
 .title {
   align-items: center;
-	border-bottom: solid #b4b4b4;
+  border-bottom: solid #e4e4e4;
   padding-bottom: 2%
 }
