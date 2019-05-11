@@ -69,21 +69,8 @@ class RequestForm extends Component{
     // Checks if all fields are valid and allows the button to submit a request.
     validateForm() {
         const { checked } = this.state
-        const {
-            firstName,
-            lastName,
-            email,
-            serviceType,
-            description
-        } = this.state.valid
-        this.setState({
-            formValid:  firstName &&
-                      lastName &&
-                      email &&
-                      serviceType &&
-                      description &&
-                      checked
-        })
+        const { firstName, lastName, email, serviceType, description } = this.state.valid
+        this.setState({ formValid: firstName && lastName && email && serviceType && description && checked })
     }
 
     // Sends a POST request which returns the response in a console.log.
@@ -119,8 +106,7 @@ class RequestForm extends Component{
                 serviceType: '',
                 description: '',
                 checked: false
-            },
-                alert(response.message))
+            },  alert(response.message))
             } else {
                 alert(response.message)
             }
