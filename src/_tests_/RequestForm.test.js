@@ -1,6 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { Form } from 'react-bootstrap'
+import { mount } from 'enzyme';
 import RequestForm from '../form/RequestForm';
 
 describe('<RequestForm>', function() {
@@ -44,7 +44,7 @@ describe('<RequestForm>', function() {
         input.simulate('change');
         expect(component.state().checked).toEqual(true);
     })
-
+    //have to fix this test.
     it('Should call alert() when submit button is clicked', function(){
         const state = {
           firstName:'hello',

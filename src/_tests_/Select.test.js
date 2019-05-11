@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Form } from 'react-bootstrap'
 import { shallow } from 'enzyme';
-import Select from '../form/Select';
+import Select from '../form/components/Select';
 
 describe('<Select />', function(){
     it('Should render correctly', function() {

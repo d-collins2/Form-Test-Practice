@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Form } from 'react-bootstrap'
 import { shallow } from 'enzyme';
-import CheckBox from '../form/Checkbox.js';
+import CheckBox from '../form/components/Checkbox.js';
 
 describe('<CheckBuox />', function(){
 

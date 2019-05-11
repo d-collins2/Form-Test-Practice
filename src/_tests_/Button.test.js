@@ -1,7 +1,7 @@
-import renderer from 'react-test-renderer';
-import Button from '../form/Button';
 import React from 'react';
+import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
+import Button from '../form/components/Button';
 
 describe('<Button />', function () {
     it('Should render correctly', function () {

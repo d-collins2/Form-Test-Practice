@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import Options from '../form/Options.js';
+import Options from '../form/components/Options.js';
 
 const options = ['1', '2', '3', '4'];
 describe('<Options />', function(){

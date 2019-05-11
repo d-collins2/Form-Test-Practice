@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Form } from 'react-bootstrap'
 import { shallow } from 'enzyme';
-import TextInput from '../form/TextInput';
+import TextInput from '../form/components/TextInput';
 
 describe('<TextInput />', function() {
 

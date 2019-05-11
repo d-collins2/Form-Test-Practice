@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import "./Form.css"
+import "./RequestForm.css"
 import { Row, Form } from 'react-bootstrap'
-import Button from './Button.js'
-import CheckBox from './CheckBox.js'
-import TextArea from './TextArea.js'
-import TextInput from './TextInput.js'
-import Select from './Select.js'
+import Button from './components/Button.js'
+import CheckBox from './components/CheckBox.js'
+import TextArea from './components/TextArea.js'
+import TextInput from './components/TextInput.js'
+import Select from './components/Select.js'
 
 class RequestForm extends Component{
     state = {
