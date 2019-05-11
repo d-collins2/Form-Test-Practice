@@ -6,9 +6,9 @@ A form which allows a user to submit a POST request for assistance.
 
 ## Contents
 
-- [Form Folder](#form folder)
+- [Form Folder](#form-folder)
 - [Tests](#tests)
 
-## Form
+## Form Folder
 
 ## Tests
