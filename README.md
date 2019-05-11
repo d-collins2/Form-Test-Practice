@@ -28,6 +28,8 @@ If a text input field, text area field or select field are not valid, the border
 ### Request Form
 The ```RequestForm.js``` is the parent component where the functionality of the form lies. Validations are checked onChange of the input fields. The first name, last name, and description validation checks whether these fields are empty. The email field uses a regular expression which checks whether a "@" and "." exist in a specific order, e.g., test@test.com. The service type field is valid as long as the first option is not selected. All of the components are required by the form which offers another form of validation onSubmit. 
 
+As long as the 201 code is sent back the form will send an alert message, clear the fields, and console.log the response. Otherwise the form will only send an alert message and not clear the fields.
+
 ## Test
 The `test` folder contains 6 test files and a snapshots folder which is used by [Jest](jestjs.io). 
 
