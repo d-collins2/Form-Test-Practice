@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Button /> Should render correctly 1`] = `
+exports[`<FormButton /> Should render correctly 1`] = `
 <div
   className="text-right"
 >
@@ -8,9 +8,6 @@ exports[`<Button /> Should render correctly 1`] = `
     className="btn btn-primary btn btn-primary"
     disabled={false}
     type="submit"
-  >
-     
-     
-  </button>
+  />
 </div>
 `;

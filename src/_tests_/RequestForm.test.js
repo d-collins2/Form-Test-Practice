@@ -21,15 +21,7 @@ describe('<RequestForm>', function() {
         expect(component.state().lastName).toEqual('Collins');
     })
 
-    it('Should capture email correctly onChange and change the props accordingly', function(){
-        const component = mount(<RequestForm />);
-        const input = component.find('input').at(2);
-        input.instance().value = 'test@gmail.com';
-        input.simulate('change');
-        expect(component.state().email).toEqual('test@gmail.com');
-    })
-
-    it('Should capture email correctly onChange and change the state accordingly', function(){
+    it('Should capture email correctly onChange', function(){
         const component = mount(<RequestForm />);
         const input = component.find('input').at(2);
         input.instance().value = 'test@gmail.com';

@@ -47,7 +47,7 @@ class RequestForm extends Component{
                 break;
             case 'email':
                 tempValid.email = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-                tempErrors.email = tempValid.email ? '' : 'Email is invalid.';
+                tempErrors.email = tempValid.email ? '' : 'Email is invalid, e.g., Test@gmail.com. ';
                 break;
             case 'serviceType':
                 tempValid.serviceType = value.length >= 1;
@@ -117,7 +117,8 @@ class RequestForm extends Component{
                 lastName: '',
                 email: '',
                 serviceType: '',
-                description: ''
+                description: '',
+                checked: false
             },
                 alert(response.message))
             } else {
@@ -134,12 +135,6 @@ class RequestForm extends Component{
             [name]: newValue },
             () => { this.validateField(name, newValue) }
         )
-    }
-
-    errorClass(error) {
-        if(error){
-            return( error.length === 0 ? '' : 'has-error');
-        }
     }
 
     render() {
@@ -160,7 +155,6 @@ class RequestForm extends Component{
                     <TextInput
                         controlId={"FirstName"}
                         formError={firstName}
-                        errorClass={this.errorClass}
                         handleChange={this.handleChange}
                         name={"firstName"}
                         placeholder={"First Name"}
@@ -168,7 +162,6 @@ class RequestForm extends Component{
                     />
                     <TextInput
                         controlId={"LastName"}
-                        errorClass={this.errorClass}
                         formError={lastName}
                         handleChange={this.handleChange}
                         name={"lastName"}
@@ -177,17 +170,14 @@ class RequestForm extends Component{
                     />
                     <TextInput
                         controlId={"Email"}
-                        errorClass={this.errorClass}
                         formError={email}
                         handleChange={this.handleChange}
                         name={"email"}
                         placeholder={"Email Address"}
                         value={this.state.email}
-
                     />
                     <Select
                         controlId={"SelectType"}
-                        errorClass={this.errorClass}
                         formError={serviceType}
                         handleChange={this.handleChange}
                         name={"serviceType"}
@@ -196,7 +186,6 @@ class RequestForm extends Component{
                     />
                     <TextArea
                         controlId={"Description"}
-                        errorClass={this.errorClass}
                         formError={description}
                         handleChange={this.handleChange}
                         name={"description"}

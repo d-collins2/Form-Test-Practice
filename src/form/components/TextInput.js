@@ -1,7 +1,8 @@
 import React from 'react';
 import { Form } from 'react-bootstrap'
 
-const TextInput = ({ controlId,  formError, handleChange, name, placeholder, value  }) => {
+const TextInput = ({ controlId, formError, handleChange, name, placeholder, value }) => {
+    //Allows the components border to become red if invalid
     function errorClass(error) {
         if(error){
             return( error.length === 0 ? '' : 'has-error');

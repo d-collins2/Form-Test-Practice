@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap'
 import Options from "./Options.js";
 
 const Select = ({ controlId, formError, handleChange, name, serviceTypes, value }) => {
+    //Allows the components border to become red if invalid
     function errorClass(error) {
         if(error){
             return( error.length === 0 ? '' : 'has-error');

@@ -1,20 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Select /> Should render correctly 1`] = `
+exports[`<TextArea /> Should render correctly 1`] = `
 <div
   className="form-group"
-  id="controlId"
 >
-  <select
+  <label
+    className="form-label"
+  />
+  <textarea
     className="form-control"
     required={true}
-  >
-    <option
-      value=""
-    >
-      Select Service Type
-    </option>
-  </select>
+    rows="4"
+  />
   <small
     className="help-block text-red form-text"
   />

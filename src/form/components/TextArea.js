@@ -2,6 +2,7 @@ import React from 'react';
 import { Form } from 'react-bootstrap'
 
 const TextArea = ({ controlId, formError, handleChange, name, value }) => {
+    //Allows the components border to become red if invalid
     function errorClass(error) {
         if(error){
             return( error.length === 0 ? '' : 'has-error');
