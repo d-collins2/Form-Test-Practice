@@ -124,13 +124,7 @@ class RequestForm extends Component{
     }
 
     render() {
-        const {
-            firstName,
-            lastName,
-            email,
-            serviceType,
-            description
-        } = this.state.formErrors
+        const { firstName, lastName, email, serviceType, description } = this.state.formErrors
         return (
             <Row>
                 <Form

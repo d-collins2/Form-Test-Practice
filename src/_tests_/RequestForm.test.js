@@ -4,7 +4,6 @@ import { mount } from 'enzyme';
 import RequestForm from '../form/RequestForm';
 
 describe('<RequestForm>', function() {
-
     it('Should capture firstname correctly onChange', function(){
         const component = mount(<RequestForm />);
         const input = component.find('input').at(0);
