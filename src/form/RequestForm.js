@@ -77,7 +77,7 @@ class RequestForm extends Component{
             description
         } = this.state.valid
         this.setState({
-            formVal:  firstName &&
+            formValid:  firstName &&
                       lastName &&
                       email &&
                       serviceType &&
