@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Select /> Should render correctly 1`] = `
+<div
+  className="form-group undefined"
+  id="controlId"
+>
+  <select
+    className="form-control"
+    onChange={[Function]}
+    required={true}
+    value={Array []}
+  >
+    <option
+      value=""
+    >
+      Select Service Type
+    </option>
+  </select>
+  <span
+    className="help-block text-red"
+  />
+  <div
+    className="text-right"
+  >
+    <span>
+      <small
+        className="text-muted"
+      >
+        Required
+      </small>
+    </span>
+  </div>
+</div>
+`;

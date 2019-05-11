@@ -1,33 +1,27 @@
 import React from 'react';
-import { Form } from 'react-bootstrap'
 
-
-const TextArea = ({value, handleChange, formError, errorClass, placeholder, name, controlId, serviceTypes}) => {
+const TextArea = ({ value, handleChange, formError, name, controlId }) => {
+    function errorClass(error) {
+        if(error){
+            return( error.length === 0 ? '' : 'has-error');
+        }
+    }
     return (
-        <Form.Group
-            controlId="exampleForm.ControlTextarea1">
-            <Form.Label>{controlId}</Form.Label>
-            <Form.Control
+        <div className={`form-group ${errorClass(formError)}`} id={controlId}>
+            <label>{controlId}</label>
+            <textarea
                 required
-                as="textarea"
+                className="form-control"
                 onChange={handleChange}
                 rows="4"
                 name={name}
-                value={value}
-                placeholder={placeholder}/>
-              <span className="help-block text-red">{formError}</span>
-                <div className="text-right">
-                    <Form.Text className="text-muted">Required</Form.Text>
-                </div>
-        </Form.Group>
+                value={value}/>
+            <span className="help-block text-red">{formError}</span>
+            <div className="text-right">
+                <span><small className="text-muted">Required</small></span>
+            </div>
+        </div>
     )
-}
-
-TextArea.defaultProps = {
-    labelFor: 'checkbox',
-    value: [],
-    handleChange: function(){},
-    label: 'TextArea'
 }
 
 export default TextArea;

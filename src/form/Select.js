@@ -1,33 +1,28 @@
 import React from "react";
-import { Form } from "react-bootstrap";
 import Options from "./Options.js";
 
-const Select = ({
-  	value,
-  	handleChange,
-  	formError,
-  	errorClass,
-  	name,
-  	controlId,
-  	serviceTypes
-}) => {
+const Select = ({ value, handleChange, formError, name, controlId, serviceTypes }) => {
+    function errorClass(error) {
+        if(error){
+            return( error.length === 0 ? '' : 'has-error');
+        }
+    }
   	return (
-    		<Form.Group controlId="controlId">
-      			<Form.Control
+    		<div className={`form-group ${errorClass(formError)}`} id="controlId">
+      			<select
         				required
-        				as="select"
+                className="form-control"
         				onChange={handleChange}
-        				name="serviceType"
-        				value={value}
-      			>
-      			<option value="">Select Service Type</option>
-      				  <Options options={serviceTypes} />
-      			</Form.Control>
+        				name={name}
+        				value={value}>
+        			  <option value="">Select Service Type</option>
+        				<Options options={serviceTypes} />
+      			</select>
       			<span className="help-block text-red">{formError}</span>
-      			<div className="text-right">
-      				  <Form.Text className="text-muted">Required</Form.Text>
-      			</div>
-    		</Form.Group>
+            <div className="text-right">
+                <span><small className="text-muted">Required</small></span>
+            </div>
+    		</div>
   	);
 };
 

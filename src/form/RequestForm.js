@@ -22,9 +22,8 @@ class RequestForm extends Component{
 
     //Checks if the input field on the form is valid.
     validateField = (fieldName, value) => {
-        const { valid, formErrors } = this.state
-        let tempValid = {...valid}
-        let tempErrors = {...formErrors}
+        const tempValid = {...this.state.valid}
+        const tempErrors = {...this.state.formErrors}
         switch(fieldName) {
             case 'firstName':
                 tempValid.firstName = value.length >= 1;
@@ -105,6 +104,12 @@ class RequestForm extends Component{
             [name]: newValue },
             () => { this.validateField(name, newValue) }
         )
+    }
+
+    errorClass(error) {
+        if(error){
+            return( error.length === 0 ? '' : 'has-error');
+        }
     }
 
     render() {
