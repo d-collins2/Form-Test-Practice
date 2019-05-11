@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from 'react-bootstrap'
 
-const FormButton = ({text}) => {
+const FormButton = ({label}) => {
     return (
         <div className="text-right">
-            <Button className="btn btn-primary" type="submit"> {text} </Button>
+            <Button className="btn btn-primary" type="submit">{label}</Button>
         </div>
     )
 }

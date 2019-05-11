@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'react-bootstrap'
 
-const TextInput = ({ value, handleChange, formError, name, placeholder, controlId }) => {
+const TextInput = ({ controlId,  formError, handleChange, name, placeholder, value  }) => {
     function errorClass(error) {
         if(error){
             return( error.length === 0 ? '' : 'has-error');
@@ -11,11 +11,11 @@ const TextInput = ({ value, handleChange, formError, name, placeholder, controlI
         <Form.Group className={errorClass(formError)} controlid={controlId}>
             <Form.Control
                 required
-                value={value}
+                name={name}
+                placeholder={placeholder}
                 onChange={handleChange}
                 type="text"
-                name={name}
-                placeholder={placeholder}/>
+                value={value}/>
             <Form.Text className="help-block text-red">{formError}</Form.Text>
             <div className="text-right">
                 <Form.Text className="text-muted">Required</Form.Text>

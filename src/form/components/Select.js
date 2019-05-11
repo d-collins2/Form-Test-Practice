@@ -2,7 +2,7 @@ import React from "react";
 import { Form } from 'react-bootstrap'
 import Options from "./Options.js";
 
-const Select = ({ value, handleChange, formError, name, controlId, serviceTypes }) => {
+const Select = ({ controlId, formError, handleChange, name, serviceTypes, value }) => {
     function errorClass(error) {
         if(error){
             return( error.length === 0 ? '' : 'has-error');
@@ -13,11 +13,11 @@ const Select = ({ value, handleChange, formError, name, controlId, serviceTypes 
       			<Form.Control
         				required
                 as="select"
+                name={name}
         				onChange={handleChange}
-        				name={name}
         				value={value}>
         			  <option value="">Select Service Type</option>
-        				<Options options={serviceTypes} />
+        				<Options options={serviceTypes}/>
       			</Form.Control>
       			<Form.Text className="help-block text-red">{formError}</Form.Text>
             <div className="text-right">

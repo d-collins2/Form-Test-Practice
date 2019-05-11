@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form } from 'react-bootstrap'
 
-const TextArea = ({ value, handleChange, formError, name, controlId }) => {
+const TextArea = ({ controlId, formError, handleChange, name, value }) => {
     function errorClass(error) {
         if(error){
             return( error.length === 0 ? '' : 'has-error');
@@ -13,9 +13,9 @@ const TextArea = ({ value, handleChange, formError, name, controlId }) => {
             <Form.Control
                 required
                 as="textarea"
+                name={name}
                 onChange={handleChange}
                 rows="4"
-                name={name}
                 value={value}/>
             <Form.Text className="help-block text-red">{formError}</Form.Text>
             <div className="text-right">
