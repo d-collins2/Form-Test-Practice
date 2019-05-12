@@ -1,6 +1,4 @@
-# Unite Us - Code Challenge
-
-Guidelines for this challenge can be found [Here](https://gist.github.com/geoherna/6088fa657d7415dbe0cb7c9aa255b69d). 
+# Unite Us - Code Challenge 
  
 A form which allows a user to submit a POST request for assistance. 
 
@@ -72,5 +70,5 @@ The `CheckBox.test.js` contains the following tests:
 ### Select
 The `Select.test.js` contains the follwoing tests:
 * Should render correctly
-* Should have one <select>
+* Should have one select
 * Should be able to select one <option> from drop down
