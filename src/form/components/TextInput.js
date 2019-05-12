@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form } from 'react-bootstrap'
 
 const TextInput = ({ controlId, formError, handleChange, name, placeholder, value }) => {
@@ -23,6 +24,24 @@ const TextInput = ({ controlId, formError, handleChange, name, placeholder, valu
             </div>
         </Form.Group>
     )
+}
+
+TextInput.propTypes = {
+    controlId: PropTypes.string,
+    formError: PropTypes.string,
+    handleChange: PropTypes.func,
+    name: PropTypes.string,
+    placeholder: PropTypes.string,
+    value: PropTypes.string
+};
+
+TextInput.defaultProps = {
+    controlId: "Id",
+    formError: "Error",
+    handleChange: function(){},
+    name: "Name",
+    placeholder: "Placeholder",
+    value: "Label"
 }
 
 export default TextInput;

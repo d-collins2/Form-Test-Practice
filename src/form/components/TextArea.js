@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form } from 'react-bootstrap'
 
 const TextArea = ({ controlId, formError, handleChange, name, value }) => {
@@ -24,6 +25,22 @@ const TextArea = ({ controlId, formError, handleChange, name, value }) => {
             </div>
         </Form.Group>
     )
+}
+
+TextArea.propTypes = {
+    controlId: PropTypes.string,
+    formError: PropTypes.string,
+    handleChange: PropTypes.func,
+    name: PropTypes.string,
+    value: PropTypes.string
+};
+
+TextArea.defaultProps = {
+    controlId: "Id",
+    formError: "Error",
+    handleChange: function(){},
+    name: "Name",
+    value: "Label"
 }
 
 export default TextArea;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap'
 
 const FormButton = ({ label }) => {
@@ -7,6 +8,14 @@ const FormButton = ({ label }) => {
             <Button className="btn btn-primary" type="submit">{label}</Button>
         </div>
     )
+}
+
+Button.propTypes = {
+    label: PropTypes.string
+};
+
+Button.defaultProps = {
+    label: "Label"
 }
 
 export default FormButton;

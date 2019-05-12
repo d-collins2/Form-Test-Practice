@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Options = ({options}) => {
     return (
@@ -7,6 +8,10 @@ const Options = ({options}) => {
         })
     )
 }
+
+Options.propTypes = {
+    options: PropTypes.array
+};
 
 Options.defaultProps = {
     options: []

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Form } from 'react-bootstrap'
 import Options from "./Options.js";
 
@@ -27,5 +28,23 @@ const Select = ({ controlId, formError, handleChange, name, serviceTypes, value 
     		</Form.Group>
   	);
 };
+
+Select.propTypes = {
+    controlId: PropTypes.string,
+    formError: PropTypes.string,
+    handleChange: PropTypes.func,
+    name: PropTypes.string,
+    serviceTypes: PropTypes.array,
+    value: PropTypes.string
+};
+
+Select.defaultProps = {
+    controlId: "Id",
+    formError: "Error",
+    handleChange: function(){},
+    name: "Name",
+    serviceTypes: [],
+    value: "Value"
+}
 
 export default Select;
