@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'react-bootstrap'
 
-const TextArea = ({ controlId, formError, handleChange, name, value }) => {
+const TextArea = ({ controlId, formError, handleChange, label, name, value }) => {
     //Allows the components border to become red if invalid
     function errorClass(error) {
         if(error){
@@ -11,7 +11,7 @@ const TextArea = ({ controlId, formError, handleChange, name, value }) => {
     }
     return (
         <Form.Group className={errorClass(formError)} id={controlId}>
-            <Form.Label>{controlId}</Form.Label>
+            <Form.Label>{label}</Form.Label>
             <Form.Control
                 required
                 as="textarea"
@@ -31,6 +31,7 @@ TextArea.propTypes = {
     controlId: PropTypes.string,
     formError: PropTypes.string,
     handleChange: PropTypes.func,
+    label: PropTypes.string,
     name: PropTypes.string,
     value: PropTypes.string
 };
@@ -39,8 +40,9 @@ TextArea.defaultProps = {
     controlId: "Id",
     formError: "Error",
     handleChange: function(){},
+    label: "Label",
     name: "Name",
-    value: "Label"
+    value: "Value"
 }
 
 export default TextArea;

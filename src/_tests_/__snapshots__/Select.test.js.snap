@@ -2,12 +2,15 @@
 
 exports[`<Select /> Should render correctly 1`] = `
 <div
-  className="form-group"
+  className="has-error form-group"
   id="controlId"
 >
   <select
     className="form-control"
+    name="Name"
+    onChange={[Function]}
     required={true}
+    value="Value"
   >
     <option
       value=""
@@ -17,7 +20,9 @@ exports[`<Select /> Should render correctly 1`] = `
   </select>
   <small
     className="help-block text-red form-text"
-  />
+  >
+    Error
+  </small>
   <div
     className="text-right"
   >

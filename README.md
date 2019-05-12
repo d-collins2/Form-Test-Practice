@@ -8,12 +8,12 @@ A form which allows a user to submit a POST request for assistance.
 - [Test](#test)
 
 ## Folders
-The app currently has 3 folders which are ```form```, ```components``` and ```tests```. The ```form``` folder contains all of the forms functionality and holds the ```components``` folder. The ```components``` folder holds the children components which are currently used in the RequestForm.js. The ```_test_``` folder runs the [Jest](jestjs.io) and [Enzyme](https://airbnb.io/enzyme/) tests for all of the components in the application.
+The app currently has 3 folders which are ```form```, ```components``` and ```tests```. The ```form``` folder contains all of the forms functionality and holds the ```components``` folder. The ```components``` folder holds the children components which are currently used in the `RequestForm.js`. The ```_test_``` folder runs the [Jest](jestjs.io) and [Enzyme](https://airbnb.io/enzyme/) tests for all of the components in the application.
 
 ## Form
 
 ### Components
-The `components` folder contains 6 lower leveled form componenets.
+The `components` folder contains 6 lower leveled form components.
 * The `TextInput.js` contains the functionality for a text field.
 * The `TextArea.js` contains the functionality for a text area field.
 * The `Select.js` contains the functionality for a dropdown menu.
@@ -33,8 +33,8 @@ The `test` folder contains 6 test files and a snapshots folder which is used by 
 
 ### Request Form
 The `RequestForm.test.js` contains the following tests for the Request Form:
-* Should capture firstname correctly onChange
-* Should capture lastname correctly onChange
+* Should capture first name correctly onChange
+* Should capture last name correctly onChange
 * Should capture email correctly onChange
 * Should capture checkbox ticked correctly onChange
 * Should call alert() when submit button is clicked

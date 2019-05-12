@@ -8,13 +8,17 @@ exports[`<CheckBuox /> Should render correctly 1`] = `
     className="form-check"
   >
     <input
+      checked={false}
       className="form-check-input position-static"
       disabled={false}
+      onChange={[Function]}
       type="checkbox"
     />
   </div>
   <label
     className="form-label"
-  />
+  >
+    Label
+  </label>
 </div>
 `;

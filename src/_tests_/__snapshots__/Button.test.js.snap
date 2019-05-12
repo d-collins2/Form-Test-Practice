@@ -5,8 +5,8 @@ exports[`<FormButton /> Should render correctly 1`] = `
   className="text-right"
 >
   <button
-    className="btn btn-primary btn btn-primary"
-    disabled={false}
+    className="btn btn-primary btn btn-undefined"
+    label="Label"
     type="submit"
   />
 </div>

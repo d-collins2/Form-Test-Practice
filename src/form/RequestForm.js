@@ -168,6 +168,7 @@ class RequestForm extends Component{
                         controlId={"Description"}
                         formError={description}
                         handleChange={this.handleChange}
+                        label={"Description"}
                         name={"description"}
                         serviceTypes={this.props.description}
                         value={this.state.description}

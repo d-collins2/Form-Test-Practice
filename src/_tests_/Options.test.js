@@ -15,5 +15,4 @@ describe('<Options />', function(){
         const component = mount(<Options options={options} />);
         expect(component.find('option').length).toEqual(4);
     });
-
 })

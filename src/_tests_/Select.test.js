@@ -16,6 +16,12 @@ describe('<Select />', function(){
         expect(component.find(Form.Control).length).toBe(1);
     })
 
+    it('Should have the correct number of default option tags', function(){
+        const component = shallow(<Select />);
+        expect(component.find('option').length).toEqual(1);
+    });
+
+
     it('Should be able to select one <option> from drop down', function() {
         const component = shallow(<Select />);
         expect(component.find('option').first().props().overlay);

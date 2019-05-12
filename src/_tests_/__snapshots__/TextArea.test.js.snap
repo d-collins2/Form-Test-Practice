@@ -2,19 +2,27 @@
 
 exports[`<TextArea /> Should render correctly 1`] = `
 <div
-  className="form-group"
+  className="has-error form-group"
+  id="Id"
 >
   <label
     className="form-label"
-  />
+  >
+    Label
+  </label>
   <textarea
     className="form-control"
+    name="Name"
+    onChange={[Function]}
     required={true}
     rows="4"
+    value="Value"
   />
   <small
     className="help-block text-red form-text"
-  />
+  >
+    Error
+  </small>
   <div
     className="text-right"
   >

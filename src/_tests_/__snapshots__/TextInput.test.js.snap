@@ -2,16 +2,23 @@
 
 exports[`<TextInput /> Should render correctly 1`] = `
 <div
-  className="form-group"
+  className="has-error form-group"
+  controlid="Id"
 >
   <input
     className="form-control"
+    name="Name"
+    onChange={[Function]}
+    placeholder="Placeholder"
     required={true}
     type="text"
+    value="Label"
   />
   <small
     className="help-block text-red form-text"
-  />
+  >
+    Error
+  </small>
   <div
     className="text-right"
   >
