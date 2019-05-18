@@ -8,28 +8,33 @@ import TextInput from './components/TextInput.js'
 import Select from './components/Select.js'
 
 class RequestForm extends Component{
-    state = {
-        formErrors: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            serviceType: '',
-            description: ''
-        },
-        valid: {
-            firstName: false,
-            lastName: false,
-            email: false,
-            serviceType: false,
-            description: false
-        },
-        firstName: '',
-        lastName: '',
-        email: '',
-        serviceType: '',
-        description: '',
-        checked: false,
-        formValid: false
+    constructor(props) {
+        super(props);
+        this.state = {
+              formErrors: {
+                  firstName: '',
+                  lastName: '',
+                  email: '',
+                  serviceType: '',
+                  description: ''
+              },
+              valid: {
+                  firstName: false,
+                  lastName: false,
+                  email: false,
+                  serviceType: false,
+                  description: false
+              },
+              firstName: '',
+              lastName: '',
+              email: '',
+              serviceType: '',
+              description: '',
+              checked: false,
+              formValid: false
+        }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     //Checks if the input field on the form is valid.
@@ -74,7 +79,7 @@ class RequestForm extends Component{
     }
 
     // Sends a POST request which returns the response in a console.log.
-    onSubmit = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault()
         const { firstName, lastName, email, serviceType, description } = this.state
         fetch('http://localhost:49567/api/assistance-requests', {
@@ -128,7 +133,7 @@ class RequestForm extends Component{
         return (
             <Row>
                 <Form
-                    onSubmit={this.onSubmit}
+                    onSubmit={this.handleSubmit}
                     className="col-md-3 col-md-offset-4 form"
                 >
                     <h2 className="title">New Assistance Request</h2>

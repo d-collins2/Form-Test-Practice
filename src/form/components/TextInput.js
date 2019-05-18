@@ -4,13 +4,13 @@ import { Form } from 'react-bootstrap'
 
 const TextInput = ({ controlId, formError, handleChange, name, placeholder, value }) => {
     //Allows the components border to become red if invalid
-    function errorClass(error) {
+    function isValid(error) {
         if(error){
             return( error.length === 0 ? '' : 'has-error');
         }
     }
     return (
-        <Form.Group className={errorClass(formError)} controlid={controlId}>
+        <Form.Group className={isValid(formError)} controlid={controlId}>
             <Form.Control
                 required
                 name={name}

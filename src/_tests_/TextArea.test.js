@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { Form } from 'react-bootstrap'
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import TextArea from '../form/components/TextArea';
 
 describe('<TextArea />', function () {
